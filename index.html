@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Simple Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EaselPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/PixiPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <script>gsap.registerPlugin(TextPlugin);</script>
+
+   
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-rose-950">
+    <div>
+        <center>
+            <h1 class="title text-orange-500 p-4 rounded-lg text-5xl font-bold">SIMPLE CALCULATOR</h1>
+        </center>
+        <div class="calculator bg-orange-600 p-6 rounded-xl shadow-lg w-80 mx-auto">
+            <div id="calc-display">
+                <input type="text" class="bg-white text-stone text-right rounded-md text-2xl font-mono mb-4 h-16 flex items-center justify-end" placeholder="0" id="result">
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(7)">7</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(8)">8</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(9)">9</button>
+                <button class="btn bg-gray-700 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-green-500" onclick="displayNum('*')">&#215</button>
+
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(4)">4</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(5)">5</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(6)">6</button>
+                <button class="btn bg-gray-700 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-green-500" onclick="displayNum('-')">&#8722</button>
+
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(1)">1</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(2)">2</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(3)">3</button>
+                <button class="btn bg-gray-700 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-green-500" onclick="displayNum('+')">&#43</button>
+
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum('00')">00</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-purple-500" onclick="displayNum(0)">0</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-700 hover:border-4 border-green-500" onclick="displayNum('.')">&#903</button>
+                <button class="btn bg-gray-700 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-green-500" onclick="displayNum('/')">&#247</button>
+
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-purple-50" onclick="clearBox()">AC</button>
+                <button class="btn bg-gray-800 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-gray-600 hover:border-4 border-red-500" onclick="rmvLastItem()">&#9003</button>
+                <button class="btn col-span-2 bg-gray-700 text-orange-500 p-4 rounded-lg text-xl font-bold hover:bg-green-400 hover:border-4 border-green-900" onclick="evaluateExp()">&#61</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.from("body", { backgroundColor: "#000", duration: 1 });
+            
+            gsap.from(".title", {
+                x: () => Math.random() * 400 - 200,
+                y: () => Math.random() * 400 - 200,
+                opacity: 0,
+                duration: 1.5,
+                ease: "bounce"
+            });
+
+            gsap.from(".calculator", { scale: 0, opacity: 0, duration: 1, delay: 1 });
+
+            gsap.from(".btn", {
+                opacity: 0,
+                y: 30,
+                stagger: 0.1,
+                duration: 0.8,
+                delay: 1.5
+            });
+        });
+    </script>
+
+<!-- 1) display number in text box -->
+ 
+<script>
+    function displayNum(num){
+    result.value+=num
+ }
+
+
+//  2) clear Text Box
+
+function clearBox(){
+    result.value=""
+}
+
+// 3)Evaluate expression
+
+function evaluateExp(){
+    result.value=eval(result.value);
+}
+// remove last item from the text box
+function rmvLastItem(){
+    result.value=result.value.slice(0,)
+}
+</script>
+</body>
+</html>
